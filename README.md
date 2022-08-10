@@ -3,10 +3,15 @@
 ## 安裝 Minikube 的先決條件
 
 最少 2 個 CPU。
+
 至少 2GB 的物理內存 (RAM)。
+
 20GB 磁盤空間。
+
 Internet 連接以下載軟件包。
+
 安裝 Docker 引擎——容器管理系統。
+
 安裝 Conntrack。
 
 ## 安裝流程

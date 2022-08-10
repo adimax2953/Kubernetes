@@ -11,5 +11,18 @@ spec:                <=== 規格描述
   containers:        <=== 描述容器
   - name: redis   <=== 將容器命名為 redis
     image: redis:latest     <=== 使用 redis 映像檔
+    command:
+      - redis-server
+      - "/redis/conf/redis.conf"
+    env:
+    - name: test
+      value: "true"
     ports:
     - containerPort: 6379   <=== 指定使用 6379 port
+   resources:
+      requests:
+        cpu: '1'
+        memory: 500Mi
+    imagePullPolicy: Always
+  securityContext:
+    privileged: false      

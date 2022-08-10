@@ -117,6 +117,8 @@ minikube status
 
 ### 5.訪問 Kubernetes UI 儀表板
 
+#### 5-1.訪問Kubernetes 儀表板方法1
+
 1.通過 Web 瀏覽器訪問 Kubernetes 儀表板
 
 minikube dashboard --url
@@ -124,5 +126,20 @@ minikube dashboard --url
 ![image](https://user-images.githubusercontent.com/13865973/183817908-01aefc5a-937d-4ab1-bd75-fd8ca919892a.png)
 
 2.複製 URL 並將其黏貼到瀏覽器中。 就可以看到 Kubernetes Web 儀表板的外觀。
+
+#### 5-1.訪問Kubernetes 儀表板方法2
+
+1.安裝 Dashboard UI
+
+kubectl apply -f https://raw.githubusercontent.com/ \kubernetes/dashboard/master/src/deploy/recommended/\ kubernetes-dashboard.yaml
+
+2.使用 kubectl 命令行工具来啟用 Dashboard 訪問
+
+kubectl proxy --address='0.0.0.0' --port=8001 --accept-hosts='^*$'
+![image](https://user-images.githubusercontent.com/13865973/183843027-85565274-e9d3-40ea-b901-bfbb2207feb1.png)
+
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+##### 注意如果是 本地環境做測試https要改http
 
 

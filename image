@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+spec:
+  ports:
+  - name: swagger
+    Port: 8000
+    containerPort: 1333
+    protocol: TCP
+    nodePort: 8000
+  - name: http
+    Port: 8080
+    containerPort: 1334
+    protocol: TCP
+    nodePort: 8080
+  - name: ws
+    containerPort: 1335
+    Port: 9090
+    protocol: TCP
+    nodePort: 9090
+  containers:
+  - name: env-test
+    image: registry.gitlab.com/tg_gaas/walletservice:v0-0-0-test-6
+    env:
+    - name: redis_host
+      value: "192.168.10.183"
+    - name: redis_port
+      value: 6379
+    - name: redis_password
+      value: ""
+    - name: redis_db
+      value: 11
+    - name: redis_poolsize
+      value: 3
+    - name: redis_scriptdefinition
+      value: "TGaming|0.0.1"
+    - name: kafka_host
+      value: "192.168.10.151"
+    - name: kafka_port
+      value: 9091  
+    - name: nsq_host
+      value: "192.168.10.185"
+    - name: nsq_port
+      value: 4150 
+    - name: wspath
+      value: "/wallet"
+    - name: wsaddr
+      value: "0.0.0.0:8080"
+    - name: httpaddr
+      value: "0.0.0.0:8000"
+    - name: swagaddr
+      value: "0.0.0.0:9090"

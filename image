@@ -3,6 +3,8 @@ kind: Pod
 metadata:
   name: walletservice
 spec:
+  imagePullSecrets:
+  - name: regcred
   ports:
   - name: swagger
     Port: 8000
